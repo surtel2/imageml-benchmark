@@ -1,0 +1,29 @@
+# =============================================================
+#  Concrete Crack Benchmark - dependencies
+#  Python 3.13.0 (Windows). Install:
+#     python -m venv venv
+#     venv\Scripts\activate
+#     pip install -r requirements.txt
+#  GPU check:  python -c "import torch; print(torch.cuda.is_available())"  -> True
+# =============================================================
+
+# PyTorch is built for CUDA 12.8 - these (+cu128) wheels are NOT on PyPI,
+# they live on the PyTorch index. --extra-index-url adds it next to PyPI.
+# (For a CPU-only machine: use .../whl/cpu below and drop the "+cu128" tags.)
+--extra-index-url https://download.pytorch.org/whl/cu128
+
+torch==2.11.0+cu128
+torchvision==0.26.0+cu128
+
+# Metrics, data, plots
+scikit-learn==1.9.0
+pandas==3.0.3
+numpy==2.5.1
+matplotlib==3.11.0
+pillow==12.3.0
+
+# MACs/FLOPs and parameter counting
+thop==0.1.1.post2209072238
+
+# Note: ultralytics (YOLO) intentionally excluded - detectors are out of
+# scope (dataset has no bounding boxes). yolov8n.pt was just an experiment.
